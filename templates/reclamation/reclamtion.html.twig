@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Réclamation {% endblock %}
+
+{% block body %}
+{% if reclamation is empty  %}
+    <p>Aucun Réclamation à traiter </p>
+{% else %}
+    <table>
+        <tr>
+            <th>id</th>
+            <th>type</th>
+            <th>status</th>
+            <th>date de réclamation</th>
+        </tr>
+            {%  for entity in reclamation %}
+
+
+
+        <tr>
+            <td>
+                {{entity.id }}
+            </td>
+            <td>
+                {{entity.type }}
+            </td>
+            <td>
+                {{entity.status }}
+            </td>
+            <td>
+                {{ entity.date|date("m/d/Y") }}
+            </td>
+
+        </tr>
+
+        {% endfor %}
+    </table>
+{% endif %}
+{% endblock %}
