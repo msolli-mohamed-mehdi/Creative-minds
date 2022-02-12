@@ -35,6 +35,29 @@ class Reclamation
     private $type;
 
     /**
+     * @ORM\Column(type="integer")
+     */
+    private $userid;
+
+
+
+    /**
+     * @return mixed
+     */
+    public function getUserid()
+    {
+        return $this->userid;
+    }
+
+    /**
+     * @param mixed $userid
+     */
+    public function setUserid($userid): void
+    {
+        $this->userid = $userid;
+    }
+
+    /**
      * @return mixed
      */
     public function getType()
