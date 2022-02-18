@@ -17,8 +17,6 @@ class Reclamation
      */
     private $id;
 
-
-
     /**
      * @ORM\Column(type="string", length=255)
      */
@@ -35,26 +33,61 @@ class Reclamation
     private $type;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="reclamations")
      */
-    private $userid;
+    private $user;
 
-
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Reservation", inversedBy="reclamations")
+     */
+    private $reservation;
 
     /**
      * @return mixed
      */
-    public function getUserid()
+    public function getId()
     {
-        return $this->userid;
+        return $this->id;
     }
 
     /**
-     * @param mixed $userid
+     * @param mixed $id
      */
-    public function setUserid($userid): void
+    public function setId($id): void
     {
-        $this->userid = $userid;
+        $this->id = $id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMessage()
+    {
+        return $this->message;
+    }
+
+    /**
+     * @param mixed $message
+     */
+    public function setMessage($message): void
+    {
+        $this->message = $message;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    /**
+     * @param mixed $status
+     */
+    public function setStatus($status): void
+    {
+        $this->status = $status;
     }
 
     /**
@@ -76,60 +109,37 @@ class Reclamation
     /**
      * @return mixed
      */
-    public function getDate()
+    public function getUser()
     {
-        return $this->date;
+        return $this->user;
     }
 
     /**
-     * @param mixed $date
+     * @param mixed $user
      */
-    public function setDate($date): void
+    public function setUser($user): void
     {
-        $this->date = $date;
+        $this->user = $user;
     }
-    /**
-     * @ORM\Column(type="date")
-     */
-    private $date;
 
     /**
      * @return mixed
      */
-    public function getStatus()
+    public function getReservation()
     {
-        return $this->status;
+        return $this->reservation;
     }
 
     /**
-     * @param mixed $status
+     * @param mixed $reservation
      */
-    public function setStatus($status): void
+    public function setReservation($reservation): void
     {
-        $this->status = $status;
+        $this->reservation = $reservation;
     }
 
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
-
-    public function setId(int $Id): self
-    {
-        $this->Id = $Id;
-
-        return $this;
-    }
-
-    public function getMessage(): ?string
-    {
+    public function __toString() {
         return $this->message;
     }
 
-    public function setMessage(string $message): self
-    {
-        $this->message = $message;
-
-        return $this;
-    }
 }

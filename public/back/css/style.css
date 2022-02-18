@@ -12,6 +12,25 @@
     bottom: 45px;
     z-index: 99;
 }
+.mahdiback{
+    margin-left: 100px;
+    margin-right: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+label{
+    width: 200px;
+    padding-right: 20%;
+}
+input[type="text"]
+{
+    width: 200px;
+    height: 40px;
+    font-style: normal;
+    list-style-type: armenian;
+}
 
 
 /*** Spinner ***/

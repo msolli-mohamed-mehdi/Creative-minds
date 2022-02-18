@@ -3,28 +3,37 @@
 {% block title %}Reclamation index{% endblock %}
 
 {% block body %}
-    <h1>Reclamation index</h1>
-
+ <center>  <br>
+     <br>
+     <a href="{{ path('reclamation_new') }}"> <button class="btn-primary"> Create new</button></a>
+     <br>
+     <br>
+ </center>
+    <div class="mahdi">
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
                 <th>Message</th>
                 <th>Status</th>
                 <th>Type</th>
+             <!--   <th>user</th> -->
+                <th>reservation</th>
                 <th>actions</th>
+
             </tr>
         </thead>
         <tbody>
         {% for reclamation in reclamations %}
             <tr>
-                <td>{{ reclamation.id }}</td>
+              <!--  <td>{{ reclamation.id }}</td> -->
                 <td>{{ reclamation.message }}</td>
                 <td>{{ reclamation.status }}</td>
                 <td>{{ reclamation.type }}</td>
+              <!--  <td>{{ reclamation.user }}</td>-->
+                <td>{{ reclamation.reservation }}</td>
                 <td>
-                    <a href="{{ path('reclamation_show', {'id': reclamation.id}) }}">show</a>
-                    <a href="{{ path('reclamation_edit', {'id': reclamation.id}) }}">edit</a>
+                    <a href="{{ path('reclamation_show', {'id': reclamation.id}) }}"><button class="btn-primary"> show </button></a>
+                  <!--  <a href="{{ path('reclamation_edit', {'id': reclamation.id}) }}">edit</a> -->
                 </td>
             </tr>
         {% else %}
@@ -34,6 +43,6 @@
         {% endfor %}
         </tbody>
     </table>
+</div>
 
-    <a href="{{ path('reclamation_new') }}">Create new</a>
 {% endblock %}
