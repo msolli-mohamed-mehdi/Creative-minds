@@ -2,25 +2,25 @@
 
 namespace App\Repository;
 
-use App\Entity\Reclamation;
+use App\Entity\Reservation;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @method Reclamation|null find($id, $lockMode = null, $lockVersion = null)
- * @method Reclamation|null findOneBy(array $criteria, array $orderBy = null)
- * @method Reclamation[]    findAll()
- * @method Reclamation[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Reservation|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Reservation|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Reservation[]    findAll()
+ * @method Reservation[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class ReclamationRepository extends ServiceEntityRepository
+class ReservationRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Reclamation::class);
+        parent::__construct($registry, Reservation::class);
     }
 
     // /**
-    //  * @return Reclamation[] Returns an array of Reclamation objects
+    //  * @return Reservation[] Returns an array of Reservation objects
     //  */
     /*
     public function findByExampleField($value)
@@ -37,7 +37,7 @@ class ReclamationRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?Reclamation
+    public function findOneBySomeField($value): ?Reservation
     {
         return $this->createQueryBuilder('r')
             ->andWhere('r.exampleField = :val')
