@@ -1,0 +1,68 @@
+{% extends 'base-back.html.twig' %}
+
+
+
+{% block content %}
+<br>
+<div class="col-sm-12 col-xl-6">
+                        <div class="bg-light rounded h-100 p-4">
+                            <h6 class="mb-4">Liste des guides </h6>
+                            <form method="POST" class="form-horizontal" >
+                            
+                                <select name="sort" id="cars">
+                                    <option value="name">nom</option>
+                                    <option value="nbr_exp">nbr d'experience </option> 
+                                    <option value="default">default </option>     
+                                </select>                                
+                                <input type="submit" class="btn btn-primary" value="Trier">
+                            
+                            <form>
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">id</th>
+                                        <th scope="col">Nom</th>
+                                        <th scope="col">Email</th>
+                                        <th scope="col">Experience</th>
+                                        <th scope="col">description</th>
+                                        <th scope="col"></th>
+                                        <th scope="col"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    {% for data in list %}
+
+                                    <tr>
+                                    <th scope="row"> {{ data.id}} </th>
+                                    <td> {{ data.name }} </td>
+                                    <td> {{data.email}} </td>
+                                    <td> {{data.experience}} </td>
+                                    <td> {{data.description}} </td>
+                                    <td> <a class="btn btn-primary" href="{{ path('updateguide', {'id': data.id }) }}">update</a></td>
+                                    <td>  <a class="btn btn-primary" href="{{ path('deleteguide', {'id': data.id }) }}">delete</a> <td> 
+
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

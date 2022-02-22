@@ -1,0 +1,79 @@
+{% extends 'base-back.html.twig' %}
+
+
+
+{% block content %}
+<br>
+<div class="col-sm-12 col-xl-6">
+                        <div class="bg-light rounded h-100 p-4">
+                            <h6 class="mb-4">Liste des offre </h6>
+                            <form method="POST" class="form-horizontal" >
+                            
+                                <input type="text" placeholder="donner le nom de votre offre" name="searchbar" class="form-control" >
+                                <br>
+                                <input type="submit" class="btn btn-primary" value="search">
+                            
+                            <form>
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">id</th>
+                                        <th scope="col">Nom</th>
+                                        <th scope="col">destination</th>
+                                        <th scope="col">id vol</th>
+                                        <th scope="col">id hotel</th>
+                                        <th scope="col">id guide </th>
+                                        <th scope="col">place dispo</th>
+                                        <th scope="col">price</th>
+                                        <th scope="col">valable de </th>
+                                        <th scope="col">valable a </th>
+                                        <th scope="col">image</th>
+                                        <th scope="col">description</th>
+                                        <th scope="col"></th>
+                                        <th scope="col"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for data in list %}
+
+                                    <tr>
+                                    <th scope="row"> {{ data.id}} </th>
+                                    <td> {{ data.name }} </td>
+                                    <td> {{ data.destination }} </td>
+                                    <td> {{ data.Vol.name}} </td>
+                                    <td> {{ data.Hotel.name}} </td>
+                                    <td> {{ data.Guide.name}} </td>
+                                    <td> {{ data.placedispo }} </td>
+                                    <td> {{ data.price }} </td>
+                                    <td> {{ data.valablede |date('d-m-Y') }} </td>
+                                    <td> {{ data.valablea |date('d-m-Y') }} </td>
+                                    <td> {{ data.image }} </td>
+                                    <td> {{ data.description }} </td>
+                                        
+                                    <td> <a class="btn btn-primary" href="{{ path('updateoffre', {'id': data.id }) }}">update</a></td>
+                                    <td>  <a class="btn btn-primary" href="{{ path('deleteoffre', {'id': data.id }) }}">delete</a> <td> 
+
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
