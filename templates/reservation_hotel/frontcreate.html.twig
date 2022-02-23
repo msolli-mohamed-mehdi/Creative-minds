@@ -1,0 +1,46 @@
+{% block content %} 
+
+
+<div id="fh5co-contact-section">
+		<div class="row">
+			<div class="col-md-6">
+				<div id="map" class="fh5co-map"></div>
+			</div>
+			<div class="col-md-6">
+				
+				<div class="col-md-12">
+					<div class="row">
+						<h3>Reservation  </h3>
+						{{form_start(formresoffre) }} 
+                        <div class="col-md-6">
+							<div class="form-group">
+							    {{form_widget(formresoffre.nbr_de_place ,{'attr':{ placeholder:'nbr de place ', class: 'form-control'}})}}
+
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								
+								{{form_widget(formresoffre.date_res ,{'attr':{class: 'form-control'}})}}
+
+								
+							</div>
+						</div>
+						
+						<div class="col-md-12">			
+                            <button type="submit" class="btn btn-primary">Reserver</button>							
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+
+
+
+
+{% endblock %}

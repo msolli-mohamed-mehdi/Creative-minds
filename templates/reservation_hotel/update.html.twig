@@ -1,0 +1,48 @@
+{% extends 'base-back.html.twig' %}
+{% block content %}
+            <div class="container-fluid pt-4 px-4">
+                <div class="row g-4">
+                    <div class="col-sm-12 col-xl-6">
+                        <div class="bg-light rounded h-100 p-4">
+                            <h6 class="mb-4">Ajouter une reservation</h6>
+                        
+
+                            {{form_start(formreshotel) }} 
+                                <div class="mb-3">
+                                    <label for="exampleInputEmail1" class="form-label">Nom Hotel</label>
+                                    {{form_widget(formreshotel.Hotel ,{'attr':{class: 'form-control'}})}}
+                                    
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="exampleInputEmail1" class="form-label">Nom client</label>
+                                    {{form_widget(formreshotel.Client ,{'attr':{class: 'form-control'}})}}
+                                    
+                                </div>
+ 
+                                <div class="mb-3">
+                                    <label for="exampleInputEmail1" class="form-label"> nombre_de_chambres</label>
+                                    {{form_widget(formreshotel.nombre_de_chambres ,{'attr':{class: 'form-control'}})}}
+                                    
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="exampleInputEmail1" class="form-label">Date reservation </label>
+                                    {{form_widget(formreshotel.date_res ,{'attr':{class: 'form-control'}})}}
+                                    
+                                </div>
+
+
+                                <br>
+                                <button type="submit" class="btn btn-primary">Ajouter</button>
+                            {{form_end(formreshotel) }} 
+
+                            
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+{% endblock %}
+
