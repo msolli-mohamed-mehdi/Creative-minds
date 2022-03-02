@@ -1,0 +1,48 @@
+{% extends 'base-back.html.twig' %}
+
+
+
+{% block content %}
+<br>
+<td>  <a class="btn btn-primary" href="{{ path('ajouterhotel') }}">Ajouter</a> <td> 
+<div class="col-sm-12 col-xl-6">
+                        <div class="bg-light rounded h-100 p-4">
+                            <h6 class="mb-4">Liste des hotels </h6>
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">id</th>
+                                        <th scope="col">Nom</th>
+                                        <th scope="col">Email</th>
+                                        <th scope="col">Localisation</th>
+                                        <th scope="col">description</th>
+                                        <th scope="col">nombre de chambre</th>
+                                        <th scope="col">description</th>
+
+                                        <th scope="col"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    {% for data in list %}
+
+                                    <tr>
+                                    <th scope="row"> {{ data.id}} </th>
+                                    <td> {{ data.nom }} </td>
+                                    <td> {{data.email}} </td>
+                                    <td> {{data.localisation}} </td>
+                                    <td> {{data.description}} </td>
+                                    <td> {{data.nbrchambre}} </td>
+                                    <td> <a class="btn btn-primary" href="{{ path('modifierhotel', {'id': data.id }) }}">modifier</a></td>
+                                    <td>  <a class="btn btn-primary" href="{{ path('supprimerhotel', {'id': data.id }) }}">supprimer</a> <td> 
+
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+
+
+{% endblock %}

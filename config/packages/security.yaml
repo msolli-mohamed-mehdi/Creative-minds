@@ -1,5 +1,6 @@
 security:
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
+<<<<<<< HEAD
     encoders:
         App\Entity\User:
             algorithm: bcrypt
@@ -13,11 +14,17 @@ security:
                 property: username
     firewalls:
 
+=======
+    providers:
+        users_in_memory: { memory: null }
+    firewalls:
+>>>>>>> 33dc6e44d1306951c90bdcb62f27e54d798629c1
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
         main:
             anonymous: lazy
+<<<<<<< HEAD
             provider: in_database
             form_login:
                 login_path: login
@@ -25,6 +32,9 @@ security:
             logout:
                 path: logout
                 target: home
+=======
+            provider: users_in_memory
+>>>>>>> 33dc6e44d1306951c90bdcb62f27e54d798629c1
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#firewalls-authentication
@@ -35,5 +45,10 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
+<<<<<<< HEAD
         - { path: ^/admin, roles: ROLE_ADMIN }
         #- { path: ^/, roles: ROLE_USER }
+=======
+        # - { path: ^/admin, roles: ROLE_ADMIN }
+        # - { path: ^/profile, roles: ROLE_USER }
+>>>>>>> 33dc6e44d1306951c90bdcb62f27e54d798629c1
