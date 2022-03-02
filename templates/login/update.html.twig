@@ -1,0 +1,47 @@
+{% extends 'base-front.html.twig' %}
+
+
+
+{% block body %}
+
+    <div class="fh5co-parallax" style="background-image: url("{{ asset('front/images/slider1.jpg') }}");" data-stellar-background-ratio="0.5">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-md-offset-0 col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0 text-center fh5co-table">
+                <div class="fh5co-intro fh5co-table-cell">
+                    <h1 class="text-center"> register </h1>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <div id="fh5co-contact-section">
+        <div class="row">
+
+            <div class="col-md-6">
+
+                <div class="col-md-12">
+                    {{ form_start(form) }}
+
+                    <div class="form-group">
+                        {{ form_row(form.password, {'attr': {'class': 'form-control','placeholder':'password...'}}) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_row(form.confirm_password, {'attr': {'class': 'form-control','placeholder':'confirm_password...'}}) }}
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <input type="submit" value="Login!" class="btn btn-primary">
+                        </div>
+                    </div>
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+{% endblock %}

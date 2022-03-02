@@ -1,0 +1,42 @@
+{% extends 'base-back.html.twig' %}
+
+{% block title %}users{% endblock %}
+
+{% block body %}
+
+    <div class="content">
+        <div class="container-fluid pt-4 px-4">
+            <div class="row g-4">
+                <div class="col-sm-12 col-xl-12">
+                    <div class="bg-light rounded h-100 p-4">
+
+                        {{ form_start(form) }}
+                            <div class="mb-3">
+                                {{ form_row(form.mail_to, {'attr': {'class': 'form-control','placeholder':'email...'},'id':'exampleInputEmail1'}) }}
+
+
+                            </div>
+                        <div class="mb-3">
+                            {{ form_row(form.sujet, {'attr': {'class': 'form-control','placeholder':'subject...'}}) }}
+
+
+                        </div>
+                        <div class="mb-3">
+                            {{ form_row(form.body, {'attr': {'class': 'form-control','placeholder':'body...'},'id':'floatingTextarea'}) }}
+
+
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width: 100%">send</button>
+                        {{ form_end(form) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+{% endblock %}
+{% block javascripts %}
+
+{% endblock %}

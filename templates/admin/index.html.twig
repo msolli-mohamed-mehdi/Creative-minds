@@ -1,0 +1,110 @@
+{% extends 'base-back.html.twig' %}
+
+{% block title %}users{% endblock %}
+
+{% block body %}
+    <style>
+    .loader {
+    border: 16px solid #f3f3f3; /* Light grey */
+    border-top: 16px solid #3498db; /* Blue */
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+    }
+
+    @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+    }
+    </style>
+
+<div class="content">
+    <div class="container-fluid pt-4 px-4">
+        <div class="row g-4">
+            <div class="col-sm-12 col-xl-12">
+                <div class="bg-light rounded h-100 p-4">
+
+                    <form>
+                        <div class="mb-3">
+
+                            <input type="text" class="form-control js-filter" id="exampleInputEmail1"
+                                   aria-describedby="emailHelp" placeholder="search for a user...">
+                            <div id="emailHelp" class="form-text">
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid pt-4 px-4">
+        <div class="bg-light text-center rounded p-4">
+            <div class="d-flex align-items-center justify-content-between mb-4">
+                <h6 class="mb-0">Recent Salse</h6>
+                <a href="">Show All</a>
+            </div>
+            <div class="table-responsive">
+                <div class="loader loading" style="display: none"></div>
+                <table class="table text-start align-middle table-bordered table-hover mb-0">
+                    <thead>
+                    <tr class="text-dark">
+                        <th scope="col">username</th>
+                        <th scope="col">email</th>
+
+                    </tr>
+                    </thead>
+                    <tbody id="content-js">
+
+                    {% include 'admin/users.html.twig' with {'users': users} %}
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div>
+        {{ knp_pagination_render(users) }}
+    </div>
+
+</div>
+
+
+{% endblock %}
+{% block javascripts %}
+    <script>
+        const loader = document.querySelector('.loader')
+        const inp = document.querySelector('.js-filter')
+        inp.addEventListener('keyup',(event)=>{
+            const data = inp.value
+            loadUrl(data)
+            loader.setAttribute('style','display:block')
+
+        })
+        async function loadUrl(data){
+            const response = await fetch('http://127.0.0.1:8000/admin?data='+data,{
+                headers:{
+                    'X-Requested-With': 'XMLHttpRequest'
+                }
+
+
+
+            })
+            const value = await response.json()
+            //console.log(value.data)
+            const block = document.querySelector('#content-js');
+            block.innerHTML=value.data
+            loader.setAttribute('style','display:none')
+
+        }
+
+
+
+
+
+
+
+
+    </script>
+{% endblock %}
