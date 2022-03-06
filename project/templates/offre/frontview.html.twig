@@ -1,0 +1,52 @@
+{% extends 'base-front.html.twig' %}
+
+
+
+
+{% block content %} 
+
+    
+    <div id="featured-hotel" class="fh5co-bg-color">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-title text-center">
+                        <h2>Nos offres</h2>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                {% for data in list %}
+                <div class="feature-full-1col">
+                
+                    
+                    <div class="image" style="background-image: url({{asset('/uploads/' ~ data.image)}});">
+                        <div class="descrip text-center">
+                            <p><small>Prix</small><span>{{data.price}}$</span></p>
+                        </div>
+                    </div>
+                    
+                        <div class="desc">
+                            <h3> {{data.name}} ,{{data.destination}}  </h3>
+                            <h4>Valable de  {{ data.valablede|date("m/d/Y")}}  jusqu'a {{ data.valablea|date("m/d/Y")}} </h4>
+                            <h4> Vol : {{data.Vol.name}} , Hotel : {{data.Hotel.name}} </h4>
+                            <h4>Guide touristique : {{data.Guide.name}} </h4>
+                            <h4>Place dispo : {{data.placedispo}} </h4>
+
+                            <p>{{data.description}}</p>
+                             
+                            <a class="btn btn-primary btn-luxe-primary" href="{{ path('frontcreateresoffre', {'id': data.id }) }}">Reserver </a>
+                        </div>
+                    
+                </div>
+                {% endfor %}
+
+            </div>
+
+        </div>
+    </div>
+           
+{% endblock %}
+			

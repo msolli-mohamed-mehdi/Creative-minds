@@ -1,0 +1,78 @@
+{% extends 'base-back.html.twig' %}
+
+
+{% block content %}
+            <!-- Form Start -->
+            <div class="container-fluid pt-4 px-4">
+                <div class="row g-4">
+                    <div class="col-sm-12 col-xl-6">
+                        <div class="bg-light rounded h-100 p-4">
+                            <h6 class="mb-4">Ajouter un guide</h6>
+                            
+                            {{form_start(formguide) }}
+                                <div class="mb-3">
+                                    <!--
+                                    <label  class="form-label">Nom</label>
+                                    <input type="text" class="form-control" >
+                                    -->
+                                    {{form_label(formguide.name)  }}
+                                    {{form_widget(formguide.name ,{'attr':{class: 'form-control'}})}}
+                                    
+                                </div>
+
+                                <div class="mb-3">
+                                    <!--
+                                    <input type="email" class="form-control" 
+                                        aria-describedby="emailHelp">
+                                    -->
+                                    {{form_label(formguide.email)  }}
+                                    {{form_widget(formguide.email ,{'attr':{class: 'form-control'}})}}
+                                </div>
+
+                                <div class="mb-3">
+                                    {{form_label(formguide.experience)  }}
+                                    {{form_widget(formguide.experience ,{'attr':{class: 'form-control'}})}}
+                                    <!--
+                                    <input type="number" class="form-control" >
+                                    -->
+                                    
+                                </div>
+                                
+                                <div class="form-floating">
+                                    <!--
+                                    <textarea class="form-control" 
+                                         style="height: 150px;"></textarea>
+                                    -->
+                                    {{form_label(formguide.description)  }}
+                                    
+                                    {{form_widget(formguide.description ,{'attr':{class: 'form-control'}})}}
+                                </div>
+
+                                <br>
+                                <button  class="btn btn-primary">Ajouter</button>
+                            {{form_end(formguide) }}
+                            
+
+                        </div>
+                    </div>
+                    
+                    
+                    
+                    
+                </div>
+            </div>
+            <!-- Form End -->
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+

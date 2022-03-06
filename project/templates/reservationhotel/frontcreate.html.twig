@@ -1,0 +1,49 @@
+{% extends 'base-front.html.twig' %}
+{% block content %} 
+
+
+<div id="fh5co-contact-section">
+		<div class="row">
+			<div class="col-md-6">
+				<div id="map" class="fh5co-map"></div>
+			</div>
+			<div class="col-md-6">
+
+				
+				<div class="col-md-12">
+					<div class="row">
+						<h3>Reservation  </h3>
+						{{form_start(formreshotel) }} 
+
+                        <div class="col-md-6">
+							<div class="form-group">
+							    {{form_widget(formreshotel.nombre_de_chambres ,{'attr':{ placeholder:'nombre_de_chambres ', class: 'form-control'}})}}
+
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								
+								{{form_widget(formreshotel.date_res ,{'attr':{class: 'form-control'}})}}
+
+								
+							</div>
+						</div>
+						
+						<div class="col-md-12">			
+                            <button type="submit" class="btn btn-primary">Reserver</button>							
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+
+
+
+
+{% endblock %}

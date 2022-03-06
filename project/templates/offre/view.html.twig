@@ -1,0 +1,205 @@
+{% extends 'base-back.html.twig' %}
+
+
+
+{% block content %}
+    <script> 
+        
+        var locations = [];
+            
+    </script>
+    {% for data in list %}
+        {% if data.destination == "Germany" %}
+            <script> 
+                console.log("eyy baba almania")
+                locations[locations.length] = ['germany', 52.344569, 13.642061] ;
+            </script>
+        {% endif %}
+
+        {% if data.destination == "France" %}
+            <script> 
+                console.log("eyy baba fransa")
+                locations[locations.length] = ['france', 48.657407, 2.651801] ;
+            </script>
+        {% endif %}
+
+        {% if data.destination == "Egypt" %}
+            <script> 
+                console.log("eyy baba masr")
+                locations[locations.length] = ['egypt', 27.437603, 29.409342] ;
+            </script>
+        {% endif %}
+
+        {% if data.destination == "England" %}
+            <script> 
+                console.log("eyy baba britania")
+                locations[locations.length] = ['england', 51.531814, -0.073865] ;
+            </script>
+        {% endif %}
+
+
+    {% endfor %}
+
+
+
+
+
+
+
+    <style>
+        /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+        #map {
+            height: 40%;
+            width : 80% ; 
+        }    
+
+
+
+    </style>
+    <script>
+
+        function initMap() {
+            const myLatLng = { lat: 48.657407, lng: 2.651801 };
+            const map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 3,
+                center: myLatLng,
+            });
+
+            //var dest_from_controller =  list_dest|json_encode() 
+            console.log("ahla ") ; 
+            for (i = 0; i < locations.length; i++)
+            {
+                console.log(locations[i]) ; 
+            }  
+
+            /*
+            var locations = [
+                ['france', 48.657407, 2.651801],
+                ['england', 51.531814, -0.073865],
+                ['germany', 52.344569, 13.642061],
+                ['egypt', 27.437603, 29.409342],
+                ['uae', 23.580980, 54.510057]
+                ];
+            locations[locations.length] = ['russia' , 55.300229, 36.238050] ; 
+            console.log(locations.length); 
+            */
+
+            var marker, i;
+
+                for (i = 0; i < locations.length; i++) {  
+                marker = new google.maps.Marker({
+                    position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+                    map: map , 
+                    title: "Hello World!",
+                });
+                google.maps.event.addListener(marker, 'click', (function(marker, i) {
+                    return function() {
+                    infowindow.setContent(locations[i][0]);
+                    infowindow.open(map, marker);
+                    }
+                })(marker, i));
+                }
+
+            /*new google.maps.Marker({
+                position: myLatLng,
+                map,
+                title: "Hello World!",
+            });*/
+        }
+    </script>
+
+
+
+
+<br>
+                    <div class="col-sm-12 col-xl-6">
+                        <div class="bg-light rounded h-100 p-4">
+                            <h6 class="mb-4">Liste des offre </h6>
+                            <form method="POST" class="form-horizontal" >
+                            
+                                <input type="text" placeholder="donner le nom de votre offre" name="searchbar" class="form-control" >
+                                <br>
+                                <input type="submit" class="btn btn-primary" value="search">
+                            
+                            <form>
+                            <a class="btn btn-primary" href="{{ path('downloadpdf') }}">telecharger pdf</a>
+
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Nom</th>
+                                        <th scope="col">destination</th>
+                                        <th scope="col"> vol</th>
+                                        <th scope="col"> hotel</th>
+                                        <th scope="col"> guide </th>
+                                        <th scope="col">place dispo</th>
+                                        <th scope="col">price</th>
+                                        <th scope="col">valable de </th>
+                                        <th scope="col">valable a </th>
+                                        <th scope="col">image</th>
+                                        <th scope="col">description</th>
+                                        <th scope="col"></th>
+                                        <th scope="col"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for data in list %}
+
+                                    <tr>
+                                    <td> {{ data.name }} </td>
+                                    <td> {{ data.destination }} </td>
+                                    <td> {{ data.Vol.name}} </td>
+                                    <td> {{ data.Hotel.name}} </td>
+                                    <td> {{ data.Guide.name}} </td>
+                                    <td> {{ data.placedispo }} </td>
+                                    <td> {{ data.price }} </td>
+                                    <td> {{ data.valablede |date('d-m-Y') }} </td>
+                                    <td> {{ data.valablea |date('d-m-Y') }} </td>
+                                    <td> {{ data.image }} </td>
+                                    <td> {{ data.description }} </td>
+                                        
+                                    <td> <a class="btn btn-primary" href="{{ path('updateoffre', {'id': data.id }) }}">update</a></td>
+                                    <td>  <a class="btn btn-primary" href="{{ path('deleteoffre', {'id': data.id }) }}">delete</a> <td> 
+
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                            <br>
+                        <h6 class="mb-4">Visualization sur google maps</h6>
+
+                        
+                        </div>
+                        
+                    </div>
+                <br>
+                <div id="map"></div>
+                
+
+            <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
+            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCy-3c-b-RYk0dabw2v-u5n21yr3jyncz8&callback=initMap&v=weekly" async></script>
+
+            {{dump(test)}}
+            <div id="div_chart" ></div>
+    
+            <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+            <script type="text/javascript">
+                {{ gc_draw(piechart, 'div_chart') }}
+            </script>
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
