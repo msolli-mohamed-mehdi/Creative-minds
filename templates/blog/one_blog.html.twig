@@ -1,0 +1,71 @@
+{% extends 'blog/index.html.twig' %}
+
+{% block contenu %}
+    <div id="hotel-facilities" style="height: 1186px;">
+        <div class="container">
+
+
+            <div id="tabs">
+                <div class="tab-content-container">
+                    <div class="tab-content active show" data-tab-content="tab1">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <img src="{{ asset(blog.image) }}" class="img-responsive" alt="Image">
+                                </div>
+                                <div class="col-md-6">
+                                    <span class="super-heading-sm">{{ blog.IdClient }}</span>
+                                    <span class="super-heading-sm">Destination : {{ destination|join(', ') }}</span>
+                                    <h3 class="heading">{{ blog.titre }}</h3>
+                                    {{ blog.contenu | raw }}
+                                    <br>
+                                      <span style="color: #393939" id="votes"> {{ blog.Blogvotes}} 👍</span>
+                                    <a href="#upvote" style="color: #393939" id="upvote">
+
+                                        <i class="fi fi-rs-thumbs-up"></i>
+
+                                        <span style="font-size: 15px ">j'aime</span>
+                                    </a>
+
+                                    </div>
+                        </div>
+                            </div>
+                        </div>
+                    </div>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+
+
+<script>
+    $(document).ready(function(){
+
+        $("#upvote").on("click", function(event){
+            event.preventDefault();
+            $.ajax({
+                url:        '/blog/{{ blog.id }}',
+                type:       'POST',
+                dataType:   'json',
+                async:      true,
+
+                success: function(data, status) {
+
+                    $('#votes').html('');
+                    blog = data[0]["votes"]+" 👍";
+                    $('#votes').append(blog);
+
+                },
+                error : function(xhr, textStatus, errorThrown) {
+                    alert('Ajax request failed.');
+                }
+            });
+        });
+
+    });
+</script>
+
+{% endblock %}
