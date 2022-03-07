@@ -32,6 +32,10 @@ class Guide
      */
     private $experience;
 
+
+
+
+    
     /**
      * @ORM\Column(type="string", length=255)
      */
