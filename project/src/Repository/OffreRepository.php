@@ -47,4 +47,20 @@ class OffreRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    
+    /*
+    public function findEntitiesByString($str)
+    {
+        return $this->getEntityManager()
+            ->createQuery(
+                'SELECT e
+                FROM AppBundle:Offre e
+                WHERE e.name LIKE :str'
+            )
+            ->setParameter('str', '%'.$str.'%')
+            ->getResult();
+    }
+    */
+
 }

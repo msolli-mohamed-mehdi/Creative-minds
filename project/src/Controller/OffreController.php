@@ -1,18 +1,21 @@
 <?php
 
 namespace App\Controller;
-use App\Entity\Offre ; 
-use App\Entity\Vol ; 
-use App\Entity\Guide ; 
-use App\Entity\Hotel ; 
-use App\Entity\Resoffre ; 
-use App\Form\OffreType; 
-use App\Form\ResoffreType; 
+
+use App\Entity\Offre;
+use App\Entity\Vol;
+use App\Entity\Guide;
+use App\Entity\Hotel;
+use App\Entity\Resoffre;
+use App\Form\OffreType;
+use App\Form\ResoffreType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use CMEN\GoogleChartsBundle\GoogleCharts\Charts\PieChart;
-use Symfony\Component\HttpFoundation\Request ;  
-use Dompdf\Dompdf ; 
-use Dompdf\Options ; 
+use Symfony\Component\HttpFoundation\Request;
+use App\Repository\OffreRepository;
+
+use Dompdf\Dompdf;
+use Dompdf\Options;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -38,32 +41,29 @@ class OffreController extends AbstractController
         $offre = new Offre();
         $form = $this->createForm(OffreType::class, $offre);
 
-        $form->handleRequest($request) ; 
+        $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()   ) {
-            if ($offre->getValablede() < $offre->getValablea() ) {
+        if ($form->isSubmitted() && $form->isValid()) {
+            if ($offre->getValablede() < $offre->getValablea()) {
                 $image = $form->get('image')->getData();
                 $file = md5(uniqid()) . '.' . $image->guessExtension();
                 $image->move(
-                    $this->getParameter('images_directory') , 
-                    $file 
-                )  ;
-                $offre->setImage($file) ; 
+                    $this->getParameter('images_directory'),
+                    $file
+                );
+                $offre->setImage($file);
 
-                $em = $this->getDoctrine()->getManager() ; 
-                $em->persist($offre) ; 
-                $em->flush() ;
-                return $this->redirectToRoute('viewoffre') ;
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($offre);
+                $em->flush();
+                return $this->redirectToRoute('viewoffre');
+            } else {
+                return $this->redirectToRoute('createoffre');
             }
-            else {
-                return $this->redirectToRoute('createoffre') ;
-            }
-            
-                
         }
-        
 
-        return $this->render('offre/create.html.twig' , ['formoffre'=> $form->createView()  ]) ; 
+
+        return $this->render('offre/create.html.twig', ['formoffre' => $form->createView()]);
     }
 
 
@@ -75,12 +75,11 @@ class OffreController extends AbstractController
     {
         $data = $this->getDoctrine()->getRepository(Offre::class)->findAll();
         //$dest = []; 
-        $dest = array(); 
-        
-        foreach ($data as $x)
-        {
+        $dest = array();
+
+        foreach ($data as $x) {
             //$dest[] = [$x->getDestination()] ; 
-            array_push($dest,$x->getDestination() );
+            array_push($dest, $x->getDestination());
         }
         /*
         $destinations=array(); ; 
@@ -90,27 +89,25 @@ class OffreController extends AbstractController
             array_push($destinations,$dest) ; 
         }
         */
-        
-        if ($request->isMethod("POST") ) {
-            
-            $name= $request->get('searchbar') ;
-            if ($name!=NULL) {
-                $data =  $this->getDoctrine()->getRepository(Offre::class)->findBy(array('name'=>$name));
+
+        if ($request->isMethod("POST")) {
+
+            $name = $request->get('searchbar');
+            if ($name != NULL) {
+                $data =  $this->getDoctrine()->getRepository(Offre::class)->findBy(array('name' => $name));
                 if ($data == NULL) {
                     $data = $this->getDoctrine()->getRepository(Offre::class)->findAll();
                 }
-            }
-            else {
+            } else {
                 $data = $this->getDoctrine()->getRepository(Offre::class)->findAll();
             }
-            
         }
 
-        
-        $array_dest_occ = array_count_values($dest) ;  
-        
+
+        $array_dest_occ = array_count_values($dest);
+
         //['sadasd'=>2 , 'sadsad'=>5] ; 
-        
+
         /*foreach ($dest as $x)
         {
             if (array_search($x , $dest)!=-1  ) {
@@ -118,21 +115,20 @@ class OffreController extends AbstractController
             }
 
         }*/
-        $final= [
-                    ['country ' , 'number of offres']
+        $final = [
+            ['country ', 'number of offres']
 
-                ] ; 
+        ];
         //$array_dest_occ["Germany"]; 
 
-        foreach($array_dest_occ as $x=>$x_value)
-        { 
-            $final[] = [$x , (int)$x_value] ; 
+        foreach ($array_dest_occ as $x => $x_value) {
+            $final[] = [$x, (int)$x_value];
         }
-        
+
 
         // charrtt  
-            $pieChart = new PieChart();
-            /*$pieChart->getData()->setArrayToDataTable(
+        $pieChart = new PieChart();
+        /*$pieChart->getData()->setArrayToDataTable(
                 [   
                     ['Country', 'Number of offres'],
                     ['Work',     11],
@@ -142,19 +138,19 @@ class OffreController extends AbstractController
                     ['Sleep',    7]
                 ]
             );*/
-            
-            $pieChart->getData()->setArrayToDataTable($final) ; 
 
-            $pieChart->getOptions()->setTitle('Representation des offres ');
-            $pieChart->getOptions()->setHeight(500);
-            $pieChart->getOptions()->setWidth(700);
-            $pieChart->getOptions()->getTitleTextStyle()->setBold(true);
-            $pieChart->getOptions()->getTitleTextStyle()->setColor('#009900');
-            $pieChart->getOptions()->getTitleTextStyle()->setItalic(true);
-            $pieChart->getOptions()->getTitleTextStyle()->setFontName('Arial');
-            $pieChart->getOptions()->getTitleTextStyle()->setFontSize(20);
+        $pieChart->getData()->setArrayToDataTable($final);
+
+        $pieChart->getOptions()->setTitle('Representation des offres ');
+        $pieChart->getOptions()->setHeight(500);
+        $pieChart->getOptions()->setWidth(700);
+        $pieChart->getOptions()->getTitleTextStyle()->setBold(true);
+        $pieChart->getOptions()->getTitleTextStyle()->setColor('#009900');
+        $pieChart->getOptions()->getTitleTextStyle()->setItalic(true);
+        $pieChart->getOptions()->getTitleTextStyle()->setFontName('Arial');
+        $pieChart->getOptions()->getTitleTextStyle()->setFontSize(20);
         //
-            /*
+        /*
                 return $this->render('offre/view.html.twig' ,  [
                     'list' => $data  
                     //'list_dest' => $dest
@@ -162,14 +158,14 @@ class OffreController extends AbstractController
                     //'destinationx' =>$destinations
                 ]   ) ; 
             */
-            return $this->render('offre/view.html.twig' ,
-            array(  'piechart' => $pieChart ,  
-                    'list'=>$data ,
-                    'test'=>$final  
-                    )
-            ) ;
-            
-
+        return $this->render(
+            'offre/view.html.twig',
+            array(
+                'piechart' => $pieChart,
+                'list' => $data,
+                'test' => $final
+            )
+        );
     }
 
 
@@ -180,19 +176,20 @@ class OffreController extends AbstractController
     public function front_view(Request $request)
     {
         $data = $this->getDoctrine()->getRepository(Offre::class)->findAll();
-        $resoffre = new Resoffre() ; 
-        
+        $resoffre = new Resoffre();
+
         $form = $this->createForm(ResoffreType::class, $resoffre);
 
-        $form->handleRequest($request) ; 
+        $form->handleRequest($request);
 
 
 
-        return $this->render('offre/frontview.html.twig', 
-        [
-            'list' => $data
-        ] ) ; 
-
+        return $this->render(
+            'offre/frontview.html.twig',
+            [
+                'list' => $data
+            ]
+        );
     }
 
 
@@ -200,35 +197,34 @@ class OffreController extends AbstractController
      * @Route("/updateoffre/{id}", name="updateoffre")
      */
 
-    public function update(Request $request ,$id)
+    public function update(Request $request, $id)
     {
-        $offre = $this->getDoctrine()->getRepository(Offre::class)->find($id) ; 
-        $form = $this->createForm(OffreType::class, $offre) ;
-        $form->handleRequest($request) ;
+        $offre = $this->getDoctrine()->getRepository(Offre::class)->find($id);
+        $form = $this->createForm(OffreType::class, $offre);
+        $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            if ($offre->getValablede() < $offre->getValablea() ) {
+            if ($offre->getValablede() < $offre->getValablea()) {
                 $image = $form->get('image')->getData();
                 $file = md5(uniqid()) . '.' . $image->guessExtension();
                 $image->move(
-                    $this->getParameter('images_directory') , 
-                    $file 
-                )  ;
-                $offre->setImage($file) ; 
-                
-                
-                $em = $this->getDoctrine()->getManager() ; 
-                $em->persist($offre) ; 
-                $em->flush() ;
-                return $this->redirectToRoute('viewoffre') ;
-            }
-            else {
-                return $this->redirectToRoute('createoffre') ;
+                    $this->getParameter('images_directory'),
+                    $file
+                );
+                $offre->setImage($file);
+
+
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($offre);
+                $em->flush();
+                return $this->redirectToRoute('viewoffre');
+            } else {
+                return $this->redirectToRoute('createoffre');
             }
         }
 
-        return $this->render('offre/update.html.twig', ['formoffre'=> $form->createView() ]) ; 
+        return $this->render('offre/update.html.twig', ['formoffre' => $form->createView()]);
     }
 
 
@@ -237,14 +233,14 @@ class OffreController extends AbstractController
      * @Route("/deleteoffre/{id}", name="deleteoffre")
      */
 
-    public function delete(Request $request ,$id)
+    public function delete(Request $request, $id)
     {
-        $offre = $this->getDoctrine()->getRepository(Offre::class)->find($id) ; 
-        $em = $this->getDoctrine()->getManager() ; 
-        $em->remove($offre) ;
-        $em->flush() ;
-        
-        return $this->redirectToRoute('viewoffre') ;
+        $offre = $this->getDoctrine()->getRepository(Offre::class)->find($id);
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($offre);
+        $em->flush();
+
+        return $this->redirectToRoute('viewoffre');
     }
 
 
@@ -256,64 +252,35 @@ class OffreController extends AbstractController
     {
         $data = $this->getDoctrine()->getRepository(Offre::class)->findAll();
         $pdfoptions = new Options();
-        $pdfoptions->set('defaultFont','Arial') ; 
-        $pdfoptions->setIsRemoteEnabled(true) ; 
+        $pdfoptions->set('defaultFont', 'Arial');
+        $pdfoptions->setIsRemoteEnabled(true);
 
         $dompdf = new Dompdf($pdfoptions);
         $context =  stream_context_create([
-            'ssl' => [ 
+            'ssl' => [
                 'verify_peer' => FALSE,
-                'verify_peer_name' => FALSE , 
-                'allow_self_signed' => TRUE 
+                'verify_peer_name' => FALSE,
+                'allow_self_signed' => TRUE
             ]
-        ]) ;
-
-        $dompdf->setHttpContext($context) ; 
-        $html = $this->renderView('offre/downloadpdf.html.twig', [
-            'list' => $data 
-        ]) ; 
-
-        $dompdf->loadHTML($html) ;
-        $dompdf->setPaper('A2','portrait') ; 
-        $dompdf->render() ;
-        $file = 'test.pdf' ; 
-        $dompdf->stream($file , [
-
-            'Attachment'=>false
         ]);
 
-        return new Response() ;
+        $dompdf->setHttpContext($context);
+        $html = $this->renderView('offre/downloadpdf.html.twig', [
+            'list' => $data
+        ]);
+
+        $dompdf->loadHTML($html);
+        $dompdf->setPaper('A2', 'portrait');
+        $dompdf->render();
+        $file = 'test.pdf';
+        $dompdf->stream($file, [
+
+            'Attachment' => false
+        ]);
+
+        return new Response();
     }
 
-
-    /**
-     * @Route("/testchart", name="testchart")
-     */
-
-    public function indexAction()
-        {
-            $pieChart = new PieChart();
-            $pieChart->getData()->setArrayToDataTable(
-                [['Task', 'Hours per Day'],
-                ['Work',     11],
-                ['Eat',      2],
-                ['Commute',  2],
-                ['Watch TV', 2],
-                ['Sleep',    7]
-                ]
-            );
-            $pieChart->getOptions()->setTitle('My Daily Activities');
-            $pieChart->getOptions()->setHeight(500);
-            $pieChart->getOptions()->setWidth(900);
-            $pieChart->getOptions()->getTitleTextStyle()->setBold(true);
-            $pieChart->getOptions()->getTitleTextStyle()->setColor('#009900');
-            $pieChart->getOptions()->getTitleTextStyle()->setItalic(true);
-            $pieChart->getOptions()->getTitleTextStyle()->setFontName('Arial');
-            $pieChart->getOptions()->getTitleTextStyle()->setFontSize(20);
-
-            return $this->render('offre/testchart.html.twig', array('piechart' => $pieChart));
-        }
-
-
+    
 
 }

@@ -4,11 +4,33 @@
 
 {% block content %}
 <br>
-<td>  <a class="btn btn-primary" href="{{ path('ajouterhotel') }}">Ajouter</a> <td> 
-<div class="col-sm-12 col-xl-6">
+
+
+        
+                
+
+        <div class="container-fluid pt-4 px-4">
+        
+                <div class="row g-4">
+                
+                    <div class="col-12">
+                    
                         <div class="bg-light rounded h-100 p-4">
                             <h6 class="mb-4">Liste des hotels </h6>
-                            <table class="table table-bordered">
+                            <form method="POST" class="form-horizontal" >
+                            
+                                <select name="sort" id="cars">
+                                    <option value="name">nom</option>
+                                    <option value="nbr_exp">nbr de chambre </option> 
+                                    <option value="default">default </option>     
+                                </select>                                
+                                <input type="submit" class="btn btn-primary" value="Trier">
+                            
+                            <form>
+                            
+                            <td>  <a class="btn btn-primary" href="{{ path('ajouterhotel') }}">Ajouter</a> <td> 
+
+                            <table class="table ">
                                 <thead>
                                     <tr>
                                         <th scope="col">id</th>
@@ -40,13 +62,15 @@
                             </table>
                         </div>
                     </div>
+            </div>
+        </div>
 
-                    <div id="div_chart"></div>
-    
-                    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-                    <script type="text/javascript">
-                        {{ gc_draw(BarChart, 'div_chart') }}
-                    </script>
+        <div id="div_chart"></div>
+
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <script type="text/javascript">
+            {{ gc_draw(BarChart, 'div_chart') }}
+        </script>
 
 
 

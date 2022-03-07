@@ -4,15 +4,18 @@
 
 {% block content %}
 <br>
-<div class="col-sm-12 col-xl-6">
+
+            <div class="container-fluid pt-4 px-4">
+                <div class="row g-4">
+                    <div class="col-12">
                         <div class="bg-light rounded h-100 p-4">
                             <h6 class="mb-4">Liste des offre </h6>
-                            <table class="table table-bordered">
+                            <table class="table">
                                 <thead>
                                     <tr>
-                                        <th scope="col">id</th>
-                                        <th scope="col">id offre</th>
-                                        <th scope="col">id client</th>
+                                        
+                                        <th scope="col"> offre</th>
+                                        <th scope="col"> client</th>
                                         <th scope="col">nbr de place</th>
                                         <th scope="col">date res</th>
                                         <th scope="col"></th>
@@ -23,15 +26,15 @@
                                     {% for data in list %}
 
                                     <tr>
-                                    <th scope="row"> {{ data.id}} </th>
-                                    <td> {{ data.Offre.name }} </td>
-                                    <td> {{ data.User.name }} </td>
-                                    <td> {{ data.nbrdeplace}} </td>
-                                    
-                                    <td> {{ data.dateres |date('d-m-Y') }} </td>
                                         
-                                    <td> <a class="btn btn-primary" href="{{ path('updateresoffre', {'id': data.id }) }}">update</a></td>
-                                    <td>  <a class="btn btn-primary" href="{{ path('deleteresoffre', {'id': data.id }) }}">delete</a> <td> 
+                                        <td> {{ data.Offre.name }} </td>
+                                        <td> {{ data.User.name }} </td>
+                                        <td> {{ data.nbrdeplace}} </td>
+                                        
+                                        <td> {{ data.dateres |date('d-m-Y') }} </td>
+                                            
+                                        <td> <a class="btn btn-primary" href="{{ path('updateresoffre', {'id': data.id }) }}">update</a></td>
+                                        <td>  <a class="btn btn-primary" href="{{ path('deleteresoffre', {'id': data.id }) }}">delete</a> <td> 
 
                                     </tr>
                                     {% endfor %}
@@ -39,6 +42,8 @@
                             </table>
                         </div>
                     </div>
+                </div>
+            </div>
 
 {% endblock %}
 

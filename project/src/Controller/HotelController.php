@@ -48,9 +48,25 @@ class HotelController extends AbstractController
      * @Route("/admin/afficherhotel", name="afficherhotel")
      */
 
-    public function afficher()
+    public function afficher(Request $request)
     {
         $data = $this->getDoctrine()->getRepository(Hotel::class)->findAll();
+
+        if ($request->isMethod("POST") ) {
+            
+            $type= $request->get('sort') ;
+            if ($type == "name" ) {
+                $data = $this->getDoctrine()->getRepository(Hotel::class)->findBy(array(),array('name' => 'ASC'));
+            }
+            
+            elseif ($type == "nbr_exp") {
+                $data = $this->getDoctrine()->getRepository(Hotel::class)->findBy(array(),array('nbr_chambre' => 'ASC'));
+            }
+            else {
+                $data = $this->getDoctrine()->getRepository(Hotel::class)->findAll();
+            }
+            
+        }
 
         $hotel= [
                     ['hotel' , 'nombre de chambre']

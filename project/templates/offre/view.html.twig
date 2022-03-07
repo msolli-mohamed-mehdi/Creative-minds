@@ -112,8 +112,11 @@
 
 
 
-<br>
-                    <div class="col-sm-12 col-xl-6">
+<br>    
+
+            <div class="container-fluid pt-4 px-4">
+                <div class="row g-4">
+                    <div class="col-12">
                         <div class="bg-light rounded h-100 p-4">
                             <h6 class="mb-4">Liste des offre </h6>
                             <form method="POST" class="form-horizontal" >
@@ -125,7 +128,7 @@
                             <form>
                             <a class="btn btn-primary" href="{{ path('downloadpdf') }}">telecharger pdf</a>
 
-                            <table class="table table-bordered">
+                            <table class="table ">
                                 <thead>
                                     <tr>
                                         <th scope="col">Nom</th>
@@ -139,8 +142,7 @@
                                         <th scope="col">valable a </th>
                                         <th scope="col">image</th>
                                         <th scope="col">description</th>
-                                        <th scope="col"></th>
-                                        <th scope="col"></th>
+                                        
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -173,6 +175,10 @@
                         </div>
                         
                     </div>
+                </div>
+            </div>
+
+
                 <br>
                 <div id="map"></div>
                 
