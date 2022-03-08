@@ -1,0 +1,206 @@
+{% extends 'base-back.html.twig' %}
+
+{% block title %}Back{% endblock %}
+{% block content %}
+
+
+
+
+
+    <div class="container-fluid pt-4 px-4">
+        <div class="bg-light text-center rounded p-4">
+            <div class="d-flex align-items-center justify-content-between mb-4">
+                <h6 class="mb-0">Recent Salse</h6>
+                <a href="">Show All</a>
+                <a href="/vol_back_create" class="btn btn-danger btn-lg " style="border-radius: 5%">ajouter</a>
+            </div>
+            <div class="table-responsive">
+                <table class="table text-start align-middle table-bordered table-hover mb-0" id="myTable" name="myTable">
+                    <thead>
+                    <tr class="text-dark">
+                        <th scope="col"><input class="form-check-input" type="checkbox"></th>
+                        <th scope="col">id</th>
+                        <th scope="col">Nom</th>
+                        <th scope="col">Destination</th>
+                        <th scope="col">Prix</th>
+                        <th scope="col">capacity</th>
+                        <th scope="col">Date Aller</th>
+                        <th scope="col">Date Retour</th>
+                        <th scope="col">Suppression</th>
+                        <th scope="col">modification</th>
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for vol in vols %}
+                    <tr>
+                        <td><input class="form-check-input" type="checkbox"></td>
+                        <td>{{ vol.id }}</td>
+                        <td>{{ vol.name }}
+                        <td>{{ vol.destination }}</td>
+                        <td>{{ vol.prix }}</td>
+                        <td>{{ vol.capacity }}</td>
+                        <td>{{ vol.dateAller }}</td>
+                        <td>{{ vol.dateRetour }}</td>
+                        <td><a href="{{ path("vol_back_delete",{'id':vol.id}) }}" role="button" class="btn btn-danger" >Supprimer</a></td>
+                        <td><a href="{{ path("vol_back_update",{'id':vol.id}) }}" role="button" class="btn btn-danger" >modifier</a></td>
+                    </tr>
+                    {% endfor %}
+
+
+                    </tbody>
+                </table>
+                <div id="pageNavPosition" class="pager-nav"></div>
+            </div>
+        </div>
+        <div id="loginModal" class="modal fade" role="dialog">
+            <div class="modal-dialog modal-lg" role="content">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Login </h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-row">
+                                <div class="form-group col-sm-4">
+                                    <label class="sr-only" for="exampleInputEmail3">Email address</label>
+                                    <input type="email" class="form-control form-control-sm mr-1" id="exampleInputEmail3" placeholder="Enter email">
+                                </div>
+                                <div class="form-group col-sm-4">
+                                    <label class="sr-only" for="exampleInputPassword3">Password</label>
+                                    <input type="password" class="form-control form-control-sm mr-1" id="exampleInputPassword3" placeholder="Password">
+                                </div>
+                                <div class="col-sm-auto">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox">
+                                        <label class="form-check-label"> Remember me
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <button type="button" class="btn btn-secondary btn-sm ml-auto" data-dismiss="modal">Cancel</button>
+                                <button type="submit" class="btn btn-primary btn-sm ml-1">Sign in</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block additional %}
+
+
+    <script>
+
+
+        /* eslint-env browser */
+        /* global document */
+
+        function Pager(tableName, itemsPerPage) {
+            'use strict';
+
+            this.tableName = tableName;
+            this.itemsPerPage = itemsPerPage;
+            this.currentPage = 1;
+            this.pages = 0;
+            this.inited = false;
+
+            this.showRecords = function (from, to) {
+                let rows = document.getElementById(tableName).rows;
+
+                // i starts from 1 to skip table header row
+                for (let i = 1; i < rows.length; i++) {
+                    if (i < from || i > to) {
+                        rows[i].style.display = 'none';
+                    } else {
+                        rows[i].style.display = '';
+                    }
+                }
+            };
+
+            this.showPage = function (pageNumber) {
+                if (!this.inited) {
+                    // Not initialized
+                    return;
+                }
+
+                let oldPageAnchor = document.getElementById('pg' + this.currentPage);
+                oldPageAnchor.className = 'pg-normal';
+
+                this.currentPage = pageNumber;
+                let newPageAnchor = document.getElementById('pg' + this.currentPage);
+                newPageAnchor.className = 'pg-selected';
+
+                let from = (pageNumber - 1) * itemsPerPage + 1;
+                let to = from + itemsPerPage - 1;
+                this.showRecords(from, to);
+
+                let pgNext = document.querySelector('.pg-next'),
+                    pgPrev = document.querySelector('.pg-prev');
+
+                if (this.currentPage == this.pages) {
+                    pgNext.style.display = 'none';
+                } else {
+                    pgNext.style.display = '';
+                }
+
+                if (this.currentPage === 1) {
+                    pgPrev.style.display = 'none';
+                } else {
+                    pgPrev.style.display = '';
+                }
+            };
+
+            this.prev = function () {
+                if (this.currentPage > 1) {
+                    this.showPage(this.currentPage - 1);
+                }
+            };
+
+            this.next = function () {
+                if (this.currentPage < this.pages) {
+                    this.showPage(this.currentPage + 1);
+                }
+            };
+
+            this.init = function () {
+                let rows = document.getElementById(tableName).rows;
+                let records = (rows.length - 1);
+
+                this.pages = Math.ceil(records / itemsPerPage);
+                this.inited = true;
+            };
+
+            this.showPageNav = function (pagerName, positionId) {
+                if (!this.inited) {
+                    // Not initialized
+                    return;
+                }
+
+                let element = document.getElementById(positionId),
+                    pagerHtml = '<span onclick="' + pagerName + '.prev();" class="pg-normal pg-prev">«</span>';
+
+                for (let page = 1; page <= this.pages; page++) {
+                    pagerHtml += '<span id="pg' + page + '" class="pg-normal pg-next" onclick="' + pagerName + '.showPage(' + page + ');">' + page + '</span>';
+                }
+
+                pagerHtml += '<span onclick="' + pagerName + '.next();" class="pg-normal">»</span>';
+
+                element.innerHTML = pagerHtml;
+            };
+        }
+
+        let pager = new Pager('myTable', 3);
+
+        pager.init();
+        pager.showPageNav('pager', 'pageNavPosition');
+        pager.showPage(1);
+    </script>
+{% endblock %}
+
+

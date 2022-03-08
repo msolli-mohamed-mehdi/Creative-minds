@@ -1,0 +1,33 @@
+{% extends 'blog/index.html.twig' %}
+
+{% block contenu %}
+    <div class="container">
+    <div class="row">
+        <form method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="exampleInputEmail1">Titre Blog</label>
+                <input  class="form-control" type="text" value="{{ blog.titre }}" id="titre" name="titre">
+                <small id="emailHelp" class="form-text text-muted">Choisir un titre cool pour votre histoire</small>
+            </div>
+            <div class="form-group">
+                <label for="contenu">Contenu</label>
+                <textarea class="form-control" id="contenu"  rows="15" name="contenu">{{ blog.contenu}}</textarea>
+
+            </div>
+            <div class="row">
+
+                <div class="blog-grid" style="background-image: url({{ asset( blog.image) }}) ; border-radius: 2% 2% 0% 0%"></div>
+            </div>
+
+
+
+            <div class="form-group">
+                <label for="exampleFormControlFile1">Insérer une image</label>
+                <input type="file" class="form-control-file" id="exampleFormControlFile1" name="image"/>
+            </div>
+            <button type="submit" class="btn btn-primary btn_round" >Appliquer modification</button>
+        </form>
+    </div>
+    </div>
+{% endblock %}
+

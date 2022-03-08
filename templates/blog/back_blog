@@ -1,0 +1,28 @@
+{% extends 'base_back.html.twig' %}
+{% block title %}Back{% endblock %}
+{% block content %}
+
+<div class="container">
+
+
+    <div id="tabs">
+        <div class="tab-content-container">
+            <div class="tab-content active show" data-tab-content="tab1">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img src="{{ asset(blog.image) }}" class="img-responsive" alt="Image">
+                        </div>
+                        <div class="col-md-6">
+                            <span class="super-heading-sm">{{ blog.IdClient }}</span>
+                            <h3 class="heading">{{ blog.titre }}</h3>
+                            <p>{{ blog.contenu }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}
+</div>

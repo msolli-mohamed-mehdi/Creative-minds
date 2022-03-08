@@ -1,0 +1,47 @@
+{% extends 'base_back.html.twig' %}
+{% block title %}Back{% endblock %}
+
+{% block content %}
+
+
+
+    <div class="container-fluid pt-4 px-4">
+        <div class="bg-light text-center rounded p-4">
+            <div class="d-flex align-items-center justify-content-between mb-4">
+                <h6 class="mb-0">Recent Salse</h6>
+                <a href="">Show All</a>
+            </div>
+            <div class="table-responsive">
+                <table class="table text-start align-middle table-bordered table-hover mb-0">
+                    <thead>
+                    <tr class="text-dark">
+                        <th scope="col"><input class="form-check-input" type="checkbox"></th>
+                        <th scope="col">id</th>
+                        <th scope="col">Titre</th>
+                        <th scope="col">contenu</th>
+                        <th scope="col">idClient</th>
+
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for blog in blogs %}
+                        <tr>
+                            <td><input class="form-check-input" type="checkbox"></td>
+                            <td>{{ blog.id }}</td>
+                            <td>{{ blog.titre }}
+                            <td>{{ blog.contenu }}</td>
+                            <td>{{ blog.idClient }}</td>
+
+                            <td><a href="{{ path("blog_back_delete",{'id':blog.id}) }}" role="button" class="btn btn-danger" >Supprimer</a></td>
+                        </tr>
+                    {% endfor %}
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

@@ -1,0 +1,67 @@
+{% extends 'base-front.html.twig' %}
+
+
+
+
+
+                {% block content %}
+                    <table class="table " style="margin: 0 auto; font-family:'Fira Sans', sans-serif; border-collapse: collapse;">
+                        <thead class="thead-dark">
+                        <tr>
+                            <th scope="col" style="text-align: left;border-top: 2px solid #009578;border-bottom: 2px solid #009578;"><input type="text" class="search-input" placeholder="Nom" style="color:black"></th>
+                            <th scope="col" style="text-align: left;border-top: 2px solid #009578;border-bottom: 2px solid #009578;"><input type="text" class="search-input" placeholder="destination" style="color:black"></th>
+                            <th scope="col" style="text-align: left;border-top: 2px solid #009578;border-bottom: 2px solid #009578;"><input type="text" class="search-input" placeholder="prix" style="color:black"></th>
+                            <th scope="col" style="text-align: left;border-top: 2px solid #009578;border-bottom: 2px solid #009578;"><input type="text" class="search-input" placeholder="capacity" style="color:black"></th>
+                            <th scope="col" style="text-align: left;border-top: 2px solid #009578;border-bottom: 2px solid #009578;"><input type="text" class="search-input" placeholder="date Aller" style="color:black"></th>
+                            <th scope="col" style="text-align: left;border-top: 2px solid #009578;border-bottom: 2px solid #009578;"><input type="text" class="search-input" placeholder="date Retour" style="color:black"></th>
+
+                        </tr>
+                        </thead>
+                        <tbody id="all_vols">
+                        {% for vol in vols %}
+                            {% if vol.capacity > 0 %}
+                        <tr>
+
+                            <td>{{ vol.name }}</td>
+                            <td>{{ vol.destination }}</td>
+                            <td>{{ vol.prix }}</td>
+                            <td>{{ vol.capacity }}</td>
+                            <td>{{ vol.dateAller }}</td>
+                            <td>{{ vol.dateRetour }}</td>
+                            <td style="padding: 5px 5px 5px 5px"><a href="#" role="button" class="btn btn-primary" style="border-radius: 10%;" data-toggle="modal" data-target="#exampleModal">Reserver</a></td>
+
+
+                        </tr>
+                            <div class="modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Confirmer votre vol :</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <span><p>nom : {{ vol.name }}</p></span>
+                                            <span><p>destination : {{ vol.destination }}</p></span>
+                                            <span><p>prix : {{ vol.prix }} dt</p></span>
+
+
+
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                                            <a type="button" class="btn btn-primary" href="{{ path("reserver",{'id':vol.id}) }}">Confirmer</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endif %}
+                        {% endfor %}
+
+                        </tbody>
+                    </table>
+
+
+                {% endblock %}
+			

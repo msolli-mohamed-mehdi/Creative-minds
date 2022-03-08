@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>
+<html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Luxe &mdash; 100% Free Fully Responsive HTML5 Template by FREEHTML5.co</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Free HTML5 Template by FREEHTML5.CO"/>
+    <meta name="keywords" content="free html5, free template, free bootstrap, html5, css3, mobile first, responsive"/>
+    <meta name="author" content="FREEHTML5.CO"/>
+
+    <!--
+      //////////////////////////////////////////////////////
+
+      FREE HTML5 TEMPLATE
+      DESIGNED & DEVELOPED by FREEHTML5.CO
+
+      Website: 		http://freehtml5.co/
+      Email: 			info@freehtml5.co
+      Twitter: 		http://twitter.com/fh5co
+      Facebook: 		https://www.facebook.com/fh5co
+
+      //////////////////////////////////////////////////////
+       -->
+
+    <!-- Facebook and Twitter integration -->
+    <meta property="og:title" content=""/>
+    <meta property="og:image" content=""/>
+    <meta property="og:url" content=""/>
+    <meta property="og:site_name" content=""/>
+    <meta property="og:description" content=""/>
+    <meta name="twitter:title" content=""/>
+    <meta name="twitter:image" content=""/>
+    <meta name="twitter:url" content=""/>
+    <meta name="twitter:card" content=""/>
+
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <link rel="shortcut icon" href="{{ asset('favicon.ico')}}">
+    <!-- <link href='https://fonts.googleapis.com/css?family=Lato:400,100,100italic,300,300italic,400italic,700italic,900,700,900italic' rel='stylesheet' type='text/css'> -->
+
+    <!-- Stylesheets -->
+    <!-- Dropdown Menu -->
+    <link rel="stylesheet" href="{{ asset('frontoffice/css/superfish.css') }}">
+    <!-- Owl Slider -->
+    <!-- <link rel="stylesheet" href="css/owl.carousel.css"> -->
+    <!-- <link rel="stylesheet" href="css/owl.theme.default.min.css"> -->
+    <!-- Date Picker -->
+    <link rel="stylesheet" href="{{ asset('frontoffice/css/bootstrap-datepicker.min.css') }}">
+    <!-- CS Select -->
+    <link rel="stylesheet" href="{{ asset('frontoffice/css/cs-select.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontoffice/css/cs-skin-border.css') }}">
+
+    <!-- Themify Icons -->
+    <link rel="stylesheet" href="{{ asset('frontoffice/css/themify-icons.css') }}">
+    <!-- Flat Icon -->
+    <link rel="stylesheet" href="{{ asset('frontoffice/css/flaticon.css') }}">
+    <!-- Icomoon -->
+    <link rel="stylesheet" href="{{ asset('frontoffice/css/icomoon.css') }}">
+    <!-- Flexslider  -->
+    <link rel="stylesheet" href="{{ asset('frontoffice/css/flexslider.css') }}">
+
+    <!-- Style -->
+    <link rel="stylesheet" href="{{ asset('frontoffice/css/style.css') }}">
+
+
+
+
+
+    <!-- Modernizr JS -->
+    <script src="{{ asset('js/modernizr-2.6.2.min.js') }}"></script>
+    <script src="https://cdn.tiny.cloud/1/e4t521wrxbi533r0lpcyzefslqi2minj39nyf5m4gjyvy4b8/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+
+    <!-- FOR IE9 below -->
+    <!--[if lt IE 9]>
+    <script src="{{ asset('js/respond.min.js') }}"></script>
+
+    <![endif]-->
+
+</head>
+<body>
+<div id="fh5co-wrapper">
+    <div id="fh5co-page">
+        <div id="fh5co-header">
+            <header id="fh5co-header-section">
+                <div class="container">
+                    <div class="nav-header">
+                        <a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle"><i></i></a>
+                        <h1 id="fh5co-logo"><a href="index.html">Luxe</a></h1>
+                        <nav id="fh5co-menu-wrap" role="navigation">
+                            <ul class="sf-menu" id="fh5co-primary-menu">
+                                <li><a href="{{ asset('home') }}">Home</a></li>
+                                <li>
+                                    <a href="hotel.html" class="fh5co-sub-ddown">Hotel</a>
+                                    <ul class="fh5co-sub-menu">
+                                        <li><a href="#">Luxe Hotel</a></li>
+                                        <li><a href="#">Deluxe Hotel</a></li>
+                                        <li>
+                                            <a href="#" class="fh5co-sub-ddown">King Hotel</a>
+                                            <ul class="fh5co-sub-menu">
+                                                <li>
+                                                    <a href="http://freehtml5.co/preview/?item=build-free-html5-bootstrap-template"
+                                                       target="_blank">Build</a></li>
+                                                <li>
+                                                    <a href="http://freehtml5.co/preview/?item=work-free-html5-template-bootstrap"
+                                                       target="_blank">Work</a></li>
+                                                <li>
+                                                    <a href="http://freehtml5.co/preview/?item=light-free-html5-template-bootstrap"
+                                                       target="_blank">Light</a></li>
+                                                <li>
+                                                    <a href="http://freehtml5.co/preview/?item=relic-free-html5-template-using-bootstrap"
+                                                       target="_blank">Relic</a></li>
+                                                <li>
+                                                    <a href="http://freehtml5.co/preview/?item=display-free-html5-template-using-bootstrap"
+                                                       target="_blank">Display</a></li>
+                                                <li>
+                                                    <a href="http://freehtml5.co/preview/?item=sprint-free-html5-template-bootstrap"
+                                                       target="_blank">Sprint</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="#">Five Star Hotel</a></li>
+                                    </ul>
+                                </li>
+                                <li><a class="active" href="{{ path("vol") }}">vol</a></li>
+                                <li><a href="{{ asset('blog') }}">Blog</a></li>
+                                <li><a href="contact.html">Contact</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </header>
+
+        </div>
+        <!-- end:fh5co-header -->
+        <div class="fh5co-parallax" style="background-image: url({{asset('frontoffice/images/tasswiretvol.jpg')}});"
+             data-stellar-background-ratio="0.5">
+            <div class="overlay"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 col-md-offset-0 col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0 text-center fh5co-table">
+                        <div class="fh5co-intro fh5co-table-cell">
+                            <h1 class="text-center">We Offer FLIGHTS</h1>
+                            <div id="pageNavPosition" class="pager-nav"><span onclick="pager.prev();" class="pg-normal pg-prev">«</span><span id="pg1" class="pg-selected" onclick="pager.showPage(1);">1</span><span onclick="pager.next();" class="pg-normal">»</span></div>
+                            <p>Stay tuned and check our Facebook Page often, details on all our new and exciting events and workshops will be posted in the next few days! <a href="https://www.facebook.com/Journey-agency-102430985696053">Journey.co</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="availability">
+            <form method="post" enctype="multipart/form-data" id="my_form">
+
+                <div class="a-col">
+                    <section>
+
+                        <div class="cs-select cs-skin-border" tabindex="0"><div class="cs-options"><ul><li data-option="" data-value="email"><span>Luxe Hotel</span></li><li data-option="" data-value="twitter"><span>Deluxe Hotel</span></li><li data-option="" data-value="linkedin"><span>Five Star Hotel</span></li></ul></div>
+                            <select class="cs-select cs-skin-border" name="destination" id="destination_select">
+                                {% for vol in vols %}
+
+                                <option value="" disabled="" selected="">Choisir Une Destination</option>
+                                <option value="email">{{ vol.destination }}</option>
+
+                                {% endfor %}
+                            </select></div></section>
+                </div>
+                <!--
+                <div class="a-col alternate">
+                    <div class="input-field">
+                        <label for="date_aller" >date aller</label>
+                        <input class="form-control" type="date" id="date_aller" name="aller">
+                    </div>
+                </div>
+                <div class="a-col alternate">
+                    <div class="input-field">
+                            <label for="date_retour" >date retour</label>
+                            <input class="form-control" type="date" id="date_retour" name="retour">
+                    </div>
+                </div>
+                -->
+                <div class="a-col action">
+                    <a href="javascript:{}" onclick="document.getElementById('my_form').submit();">
+
+                    <span>Check</span>
+                        Availability
+                    </a>
+                </div>
+            </form>
+        </div>
+
+
+        <div id="fh5co-services-section" style="margin: 10px auto;padding: 10px">
+                {% block contenu %}
+                    <table class="table " style="margin: 0 auto; font-family:'Fira Sans', sans-serif; border-collapse: collapse;">
+                        <thead class="thead-dark">
+                        <tr>
+                            <th scope="col" style="text-align: left;border-top: 2px solid #009578;border-bottom: 2px solid #009578;"><input type="text" class="search-input" placeholder="Nom" style="color:black"></th>
+                            <th scope="col" style="text-align: left;border-top: 2px solid #009578;border-bottom: 2px solid #009578;"><input type="text" class="search-input" placeholder="destination" style="color:black"></th>
+                            <th scope="col" style="text-align: left;border-top: 2px solid #009578;border-bottom: 2px solid #009578;"><input type="text" class="search-input" placeholder="prix" style="color:black"></th>
+                            <th scope="col" style="text-align: left;border-top: 2px solid #009578;border-bottom: 2px solid #009578;"><input type="text" class="search-input" placeholder="capacity" style="color:black"></th>
+                            <th scope="col" style="text-align: left;border-top: 2px solid #009578;border-bottom: 2px solid #009578;"><input type="text" class="search-input" placeholder="date Aller" style="color:black"></th>
+                            <th scope="col" style="text-align: left;border-top: 2px solid #009578;border-bottom: 2px solid #009578;"><input type="text" class="search-input" placeholder="date Retour" style="color:black"></th>
+
+                        </tr>
+                        </thead>
+                        <tbody id="all_vols">
+                        {% for vol in vols %}
+                            {% if vol.capacity > 0 %}
+                        <tr>
+
+                            <td>{{ vol.name }}</td>
+                            <td>{{ vol.destination }}</td>
+                            <td>{{ vol.prix }}</td>
+                            <td>{{ vol.capacity }}</td>
+                            <td>{{ vol.dateAller }}</td>
+                            <td>{{ vol.dateRetour }}</td>
+                            <td style="padding: 5px 5px 5px 5px"><a href="#" role="button" class="btn btn-primary" style="border-radius: 10%;" data-toggle="modal" data-target="#exampleModal">Reserver</a></td>
+
+
+                        </tr>
+                            <div class="modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Confirmer votre vol :</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <span><p>nom : {{ vol.name }}</p></span>
+                                            <span><p>destination : {{ vol.destination }}</p></span>
+                                            <span><p>prix : {{ vol.prix }} dt</p></span>
+
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                                            <a type="button" class="btn btn-primary" href="{{ path("reserver",{'id':vol.id}) }}">Confirmer</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endif %}
+                        {% endfor %}
+
+                        </tbody>
+                    </table>
+
+
+                {% endblock %}
+        </div>
+
+        <footer id="footer" class="fh5co-bg-color">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="copyright">
+                            <p><small>&copy; 2016 Free HTML5 Template. <br> All Rights Reserved. <br>
+                                    Designed by <a href="http://freehtml5.co" target="_blank">FreeHTML5.co</a> <br> Demo
+                                    Images: <a href="http://unsplash.com/" target="_blank">Unsplash</a></small></p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <h3>Company</h3>
+                                <ul class="link">
+                                    <li><a href="#">About Us</a></li>
+                                    <li><a href="#">Hotels</a></li>
+                                    <li><a href="#">Customer Care</a></li>
+                                    <li><a href="#">Contact Us</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-md-3">
+                                <h3>Our Facilities</h3>
+                                <ul class="link">
+                                    <li><a href="#">Resturant</a></li>
+                                    <li><a href="#">Bars</a></li>
+                                    <li><a href="#">Pick-up</a></li>
+                                    <li><a href="#">Swimming Pool</a></li>
+                                    <li><a href="#">Spa</a></li>
+                                    <li><a href="#">Gym</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <h3>Subscribe</h3>
+                                <p>Sed cursus ut nibh in semper. Mauris varius et magna in fermentum. </p>
+                                <form action="#" id="form-subscribe">
+                                    <div class="form-field">
+                                        <input type="email" placeholder="Email Address" id="email">
+                                        <input type="submit" id="submit" value="Send">
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <ul class="social-icons">
+                            <li>
+                                <a href="#"><i class="icon-twitter-with-circle"></i></a>
+                                <a href="#"><i class="icon-facebook-with-circle"></i></a>
+                                <a href="#"><i class="icon-instagram-with-circle"></i></a>
+                                <a href="#"><i class="icon-linkedin-with-circle"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+    <!-- END fh5co-page -->
+
+</div>
+<!-- END fh5co-wrapper -->
+
+<!-- Javascripts -->
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
+<script src="js/jquery-2.1.4.min.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        document.querySelectorAll(".search-input").forEach((inputField) => {
+            const tableRows = inputField
+                .closest("table")
+                .querySelectorAll("tbody > tr");
+            const headerCell = inputField.closest("th");
+            const otherHeaderCells = headerCell.closest("tr").children;
+            const columnIndex = Array.from(otherHeaderCells).indexOf(headerCell);
+            const searchableCells = Array.from(tableRows).map(
+                (row) => row.querySelectorAll("td")[columnIndex]
+            );
+
+            inputField.addEventListener("input", () => {
+                const searchQuery = inputField.value.toLowerCase();
+
+                for (const tableCell of searchableCells) {
+                    const row = tableCell.closest("tr");
+                    const value = tableCell.textContent.toLowerCase().replace(",", "");
+
+                    row.style.visibility = null;
+
+                    if (value.search(searchQuery) === -1) {
+                        row.style.visibility = "collapse";
+                    }
+                }
+            });
+        });
+    });
+
+</script>
+{% block additional %}
+
+
+    <script>
+
+
+        /* eslint-env browser */
+        /* global document */
+
+        function Pager(tableName, itemsPerPage) {
+            'use strict';
+
+            this.tableName = tableName;
+            this.itemsPerPage = itemsPerPage;
+            this.currentPage = 1;
+            this.pages = 0;
+            this.inited = false;
+
+            this.showRecords = function (from, to) {
+                let rows = document.getElementById(tableName).rows;
+
+                // i starts from 1 to skip table header row
+                for (let i = 1; i < rows.length; i++) {
+                    if (i < from || i > to) {
+                        rows[i].style.display = 'none';
+                    } else {
+                        rows[i].style.display = '';
+                    }
+                }
+            };
+
+            this.showPage = function (pageNumber) {
+                if (!this.inited) {
+                    // Not initialized
+                    return;
+                }
+
+                let oldPageAnchor = document.getElementById('pg' + this.currentPage);
+                oldPageAnchor.className = 'pg-normal';
+
+                this.currentPage = pageNumber;
+                let newPageAnchor = document.getElementById('pg' + this.currentPage);
+                newPageAnchor.className = 'pg-selected';
+
+                let from = (pageNumber - 1) * itemsPerPage + 1;
+                let to = from + itemsPerPage - 1;
+                this.showRecords(from, to);
+
+                let pgNext = document.querySelector('.pg-next'),
+                    pgPrev = document.querySelector('.pg-prev');
+
+                if (this.currentPage == this.pages) {
+                    pgNext.style.display = 'none';
+                } else {
+                    pgNext.style.display = '';
+                }
+
+                if (this.currentPage === 1) {
+                    pgPrev.style.display = 'none';
+                } else {
+                    pgPrev.style.display = '';
+                }
+            };
+
+            this.prev = function () {
+                if (this.currentPage > 1) {
+                    this.showPage(this.currentPage - 1);
+                }
+            };
+
+            this.next = function () {
+                if (this.currentPage < this.pages) {
+                    this.showPage(this.currentPage + 1);
+                }
+            };
+
+            this.init = function () {
+                let rows = document.getElementById(tableName).rows;
+                let records = (rows.length - 1);
+
+                this.pages = Math.ceil(records / itemsPerPage);
+                this.inited = true;
+            };
+
+            this.showPageNav = function (pagerName, positionId) {
+                if (!this.inited) {
+                    // Not initialized
+                    return;
+                }
+
+                let element = document.getElementById(positionId),
+                    pagerHtml = '<span onclick="' + pagerName + '.prev();" class="pg-normal pg-prev">«</span>';
+
+                for (let page = 1; page <= this.pages; page++) {
+                    pagerHtml += '<span id="pg' + page + '" class="pg-normal pg-next" onclick="' + pagerName + '.showPage(' + page + ');">' + page + '</span>';
+                }
+
+                pagerHtml += '<span onclick="' + pagerName + '.next();" class="pg-normal">»</span>';
+
+                element.innerHTML = pagerHtml;
+            };
+        }
+
+        let pager = new Pager('myTable', 3);
+
+        pager.init();
+        pager.showPageNav('pager', 'pageNavPosition');
+        pager.showPageNav('pager', 'pageNavPosition');
+        pager.showPage(1);
+
+    </script>
+{% endblock %}
+
+
+
+<!-- Dropdown Menu -->
+<script src="js/hoverIntent.js"></script>
+<script src="js/superfish.js"></script>
+<!-- Bootstrap -->
+<script src="js/bootstrap.min.js"></script>
+<!-- Waypoints -->
+<script src="js/jquery.waypoints.min.js"></script>
+<!-- Counters -->
+<script src="js/jquery.countTo.js"></script>
+<!-- Stellar Parallax -->
+<script src="js/jquery.stellar.min.js"></script>
+<!-- Owl Slider -->
+<!-- // <script src="js/owl.carousel.min.js"></script> -->
+<!-- Date Picker -->
+<script src="js/bootstrap-datepicker.min.js"></script>
+<!-- CS Select -->
+<script src="js/classie.js"></script>
+<script src="js/selectFx.js"></script>
+<!-- Flexslider -->
+<script src="js/jquery.flexslider-min.js"></script>
+
+<script src="js/custom.js"></script>
+
+</body>
+</html>
