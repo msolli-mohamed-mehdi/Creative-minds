@@ -33,7 +33,7 @@ class OffreController extends AbstractController
     }
 
     /**
-     * @Route("/createoffre", name="createoffre")
+     * @Route("/admin/createoffre", name="createoffre")
      */
 
     public function create(Request $request)
@@ -69,7 +69,7 @@ class OffreController extends AbstractController
 
 
     /**
-     * @Route("/viewoffre", name="viewoffre")
+     * @Route("/admin/viewoffre", name="viewoffre")
      */
 
     public function view(Request $request)
@@ -171,7 +171,7 @@ class OffreController extends AbstractController
 
 
     /**
-     * @Route("/frontviewoffre", name="frontviewoffre")
+     * @Route("/front/frontviewoffre", name="frontviewoffre")
      */
 
     public function front_view(Request $request)

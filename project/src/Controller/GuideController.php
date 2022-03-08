@@ -22,7 +22,7 @@ class GuideController extends AbstractController
     }
 
     /**
-     * @Route("/createguide", name="createguide")
+     * @Route("/admin/createguide", name="createguide")
      */
     public function create(Request $request)
     {
@@ -48,7 +48,7 @@ class GuideController extends AbstractController
     }
 
     /**
-     * @Route("/viewguide", name="viewguide")
+     * @Route("/admin/viewguide", name="viewguide")
      */
 
     public function view(Request $request)

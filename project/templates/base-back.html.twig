@@ -59,15 +59,18 @@
                         </div>
                     </div>
                     <div class="navbar-nav w-100">
-                        <a href="index.html" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+                        <a href="{{ path('admin') }}" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
                         
 
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Forms</a>
                             <div class="dropdown-menu bg-transparent border-0">
-                                <a href="form_guide.html" class="dropdown-item">Guide touristique</a>
-                                <a href="form_offre.html" class="dropdown-item">Offre de voyage</a>
-                                <a href="reservation_offre.html" class="dropdown-item">Reservation offre </a>
+                                <a href="{{ path('createguide') }}" class="dropdown-item">Guide touristique</a>
+                                <a href="{{ path('createoffre') }}" class="dropdown-item">Offre de voyage</a>
+                                <a href="{{ path('createresoffre') }}" class="dropdown-item">Reservation offre </a>
+                                <a href="{{ path('ajouterhotel') }}" class="dropdown-item">hotel  </a>
+                                <a href="{{ path('createreservationhotel') }}" class="dropdown-item">Reservation hotel </a>
+                                <a href="{{ path('vol_back_create') }}" class="dropdown-item">Vol </a>
 
                             </div>
                         </div>
@@ -75,13 +78,17 @@
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Tables</a>
                             <div class="dropdown-menu bg-transparent border-0">
-                                <a href="button.html" class="dropdown-item">Guide touristique</a>
-                                <a href="typography.html" class="dropdown-item">Offre de voyage</a>
-                                <a href="element.html" class="dropdown-item">Reservation offre </a>
+                                <a href="{{ path('viewguide') }}" class="dropdown-item">Guide touristique</a>
+                                <a href="{{ path('viewoffre') }}" class="dropdown-item">Offre de voyage</a>
+                                <a href="{{ path('viewresoffre') }}" class="dropdown-item">Reservation offre </a>
                                 <a href="{{ path('viewreclamation') }}" class="dropdown-item">list of all reclamation </a>
                                 <a href="{{ path('viewreclamationencours') }}" class="dropdown-item">reclamation encore</a>
                                 <a href="{{ path('viewreclamationaccepted') }}" class="dropdown-item">reclamation accepter</a>
                                 <a href="{{ path('viewreclamationrefused') }}" class="dropdown-item">reclamation reffuser</a>
+                                <a href="{{ path('afficherhotel') }}" class="dropdown-item">hotel </a>
+                                <a href="{{ path('vol_back') }}" class="dropdown-item">hotel </a>
+                                
+                                <a href="{{ path('viewreshotel') }}" class="dropdown-item">reservation hotel </a>
 
                             </div>
                         </div>

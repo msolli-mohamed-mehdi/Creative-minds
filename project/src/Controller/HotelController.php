@@ -4,6 +4,8 @@ namespace App\Controller;
 use App\Entity\Hotel ; 
 use App\Form\HotelType; 
 use CMEN\GoogleChartsBundle\GoogleCharts\Charts\BarChart;
+use Dompdf\Dompdf;
+use Dompdf\Options;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -95,7 +97,7 @@ class HotelController extends AbstractController
 
 
     /**
-     * @Route("/modifierhotel/{id}", name="modifierhotel")
+     * @Route("/admin/modifierhotel/{id}", name="modifierhotel")
      */
 
     public function modifier(Request $request ,$id)
@@ -134,7 +136,7 @@ class HotelController extends AbstractController
     }
 
     /**
-     * @Route("/fronthotel", name="fronthotel")
+     * @Route("front/hotel", name="fronthotel")
      */
 
     public function front_view(Request $request)
@@ -147,6 +149,47 @@ class HotelController extends AbstractController
             'list' => $data
         ] ) ; 
 
+    }
+
+
+
+    
+    /**
+     * @Route("/hoteldownloadpdf", name="hoteldownloadpdf")
+     */
+
+    public function downloadpdf()
+    {
+        $data = $this->getDoctrine()->getRepository(Hotel::class)->findAll();
+        $pdfoptions = new Options();
+        $pdfoptions->set('defaultFont', 'Arial');
+        $pdfoptions->setIsRemoteEnabled(true);
+
+
+        $dompdf = new Dompdf($pdfoptions);
+        $context =  stream_context_create([
+            'ssl' => [
+                'verify_peer' => FALSE,
+                'verify_peer_name' => FALSE,
+                'allow_self_signed' => TRUE
+            ]
+        ]);
+
+        $dompdf->setHttpContext($context);
+        $html = $this->renderView('hotel/downloadpdf.html.twig', [
+            'list' => $data
+        ]);
+
+        $dompdf->loadHTML($html);
+        $dompdf->setPaper('A2', 'portrait');
+        $dompdf->render();
+        $file = 'test.pdf';
+        $dompdf->stream($file, [
+
+            'Attachment' => false
+        ]);
+
+        return new Response();
     }
 
 

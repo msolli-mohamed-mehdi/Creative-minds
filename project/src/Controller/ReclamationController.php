@@ -24,7 +24,7 @@ class ReclamationController extends AbstractController
 
 
     /**
-     * @Route("/viewreclamation", name="viewreclamation", methods={"GET"})
+     * @Route("/admin/viewreclamation", name="viewreclamation", methods={"GET"})
      */
     public function index(ReclamationRepository $reclamationRepository): Response
     {
@@ -36,7 +36,7 @@ class ReclamationController extends AbstractController
 
 
     /**
-     * @Route("/viewreclamationencours", name="viewreclamationencours", methods={"GET"})
+     * @Route("/admin/viewreclamationencours", name="viewreclamationencours", methods={"GET"})
      */
     public function indexb(ReclamationRepository $reclamationRepository): Response
     {
@@ -45,7 +45,7 @@ class ReclamationController extends AbstractController
         ]);
     }
     /**
-     * @Route("/viewreclamationaccepted", name="viewreclamationaccepted", methods={"GET"})
+     * @Route("/admin/viewreclamationaccepted", name="viewreclamationaccepted", methods={"GET"})
      */
     public function indexA(ReclamationRepository $reclamationRepository): Response
     {
@@ -54,7 +54,7 @@ class ReclamationController extends AbstractController
         ]);
     }
     /**
-     * @Route("/viewreclamationrefused", name="viewreclamationrefused", methods={"GET"})
+     * @Route("/admin/viewreclamationrefused", name="viewreclamationrefused", methods={"GET"})
      */
     public function indexr(ReclamationRepository $reclamationRepository): Response
     {
@@ -105,7 +105,7 @@ class ReclamationController extends AbstractController
 
 
     /**
-     * @Route("/frontcreatereclamation", name="frontcreatereclamation", methods={"GET", "POST"})
+     * @Route("/front/frontcreatereclamation", name="frontcreatereclamation", methods={"GET", "POST"})
      */
     public function new(Request $request, EntityManagerInterface $entityManager,UserRepository $UserReppo): Response
     {
@@ -130,7 +130,7 @@ class ReclamationController extends AbstractController
 
 
     /**
-     * @Route("/frontviewreclamation", name="frontviewreclamation", methods={"GET"})
+     * @Route("/front/frontviewreclamation", name="frontviewreclamation", methods={"GET"})
      */
     public function indexf(ReclamationRepository $reclamationRepository): Response
     {

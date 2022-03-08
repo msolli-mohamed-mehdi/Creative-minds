@@ -59,7 +59,7 @@ class ResoffreController extends AbstractController
 
     
     /**
-     * @Route("/frontcreateresoffre/{id}", name="frontcreateresoffre")
+     * @Route("/front/frontcreateresoffre/{id}", name="frontcreateresoffre")
      */
 
     public function front_create(Request $request , $id)
