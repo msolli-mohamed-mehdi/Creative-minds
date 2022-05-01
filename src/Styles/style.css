@@ -1,0 +1,7 @@
+.mehdi:hover{
+    -fx-background-color: #ED701B;
+    -fx-text-fill: #031AC3;
+    -fx-border-color : #10E3EC;
+    -fx-border-width : 3px;
+}
+

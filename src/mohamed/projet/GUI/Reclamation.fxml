@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="781.0" prefWidth="1344.0" style="-fx-background-color: linear-gradient(to right top,#0066ff,#66ffff);" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mohamed.projet.GUI.ReclamationController">
+   <children>
+      <VBox layoutX="33.0" layoutY="179.0" prefHeight="307.0" prefWidth="100.0" spacing="40.0">
+         <children>
+            <Label fx:id="labelemail" text="Email" textFill="#25f206">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font></Label>
+            <Label fx:id="labeltype" text="Type" textFill="#25f206">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font></Label>
+            <Label fx:id="labelMessage" text="Message" textFill="#25f206">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font></Label>
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </VBox>
+      <VBox layoutX="146.0" layoutY="179.0" prefHeight="360.0" prefWidth="311.0" spacing="28.0">
+         <children>
+            <TextField fx:id="tfEmail" />
+            <TextField fx:id="tfType" />
+            <TextField fx:id="tfMessage" alignment="TOP_LEFT" prefHeight="108.0" prefWidth="215.0" />
+         </children>
+      </VBox>
+      <Button fx:id="btnModifier" layoutX="183.0" layoutY="590.0" mnemonicParsing="false" onAction="#modifierReclamation" prefHeight="37.0" prefWidth="125.0" style="-fx-background-color: #F6C23E; -fx-background-radius: 90;" styleClass="mehdi" stylesheets="@../../../Styles/style.css" text="Modifier">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font></Button>
+      <TableView fx:id="tvReclamations" layoutX="479.0" layoutY="179.0" prefHeight="360.0" prefWidth="853.0">
+        <columns>
+          <TableColumn fx:id="typecol" prefWidth="108.0" text="Type" />
+            <TableColumn fx:id="emailcol" prefWidth="163.0" text="Email" />
+            <TableColumn fx:id="statutcol" prefWidth="169.0" text="Statut" />
+            <TableColumn fx:id="messagecol" prefWidth="412.0" text="Message" />
+        </columns>
+         <effect>
+            <Lighting>
+               <bumpInput>
+                  <Shadow />
+               </bumpInput>
+              
+            </Lighting>
+         </effect>
+      </TableView>
+      <Label layoutX="33.0" layoutY="14.0" prefHeight="45.0" prefWidth="356.0" text="Vos réclamations" textFill="#f5f3f3">
+         <font>
+            <Font name="System Bold Italic" size="30.0" />
+         </font>
+      </Label>
+      <Button fx:id="btnajout" layoutX="33.0" layoutY="590.0" mnemonicParsing="false" onAction="#ajouterclamation" prefHeight="37.0" prefWidth="125.0" style="-fx-background-color: #1CC88A; -fx-background-radius: 90;" styleClass="mehdi" stylesheets="@../../../Styles/style.css" text="Ajouter">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Button>
+      <ImageView fitHeight="31.0" fitWidth="35.0" layoutX="38.0" layoutY="593.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/images/add.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="31.0" fitWidth="25.0" layoutX="187.0" layoutY="596.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/images/modify.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="btnsupprimer" layoutX="327.0" layoutY="590.0" mnemonicParsing="false" onAction="#supprimereclamation" prefHeight="37.0" prefWidth="125.0" style="-fx-background-color: #E74A3B; -fx-background-radius: 90;" styleClass="mehdi" stylesheets="@../../../Styles/style.css" text="Supprimer">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Button>
+      <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="328.0" layoutY="596.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/images/delete.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="1140.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/images/12.png" />
+         </image>
+      </ImageView>
+      <Button layoutX="1081.0" layoutY="140.0" mnemonicParsing="false" onAction="#playMusic" prefHeight="31.0" prefWidth="240.0" style="-fx-background-color: linear-gradient(to right top,#0066ff,#F031E6); -fx-background-radius: 40;" text="démarrer musique" />
+      <ImageView fitHeight="37.0" fitWidth="44.0" layoutX="1081.0" layoutY="137.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/images/music.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="479.0" layoutY="137.0" prefHeight="36.0" prefWidth="387.0" text="Historique de vos réclamations" textFill="#f5f3f3">
+         <font>
+            <Font name="System Bold" size="25.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
